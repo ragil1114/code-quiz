@@ -20,7 +20,7 @@ THEN I can save my initials and score
 
 #### Links
 URL:
-
+https://ragil1114.github.io/code-quiz/
 
 GitHub:
 https://github.com/ragil1114/code-quiz.git
