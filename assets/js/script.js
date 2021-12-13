@@ -79,10 +79,3 @@ function checkAnswer() {
 
 
 startBtn.onclick = startQuiz;
-
-
-// var question = questions[gameIndex];
-
-// var questionDiv = document.createElement("div");
-// var titleP = document.createElement("p");
-// titleP.textContent = question.title;
