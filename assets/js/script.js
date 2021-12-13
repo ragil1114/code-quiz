@@ -10,7 +10,7 @@ var gameIndex = -1;
 
 
 function startQuiz() {
-    timerEl. textContent = time;
+    timerEl.textContent = time;
     timerInterval = setInterval(function() {
         time--;
         timerEl.textContent = time;
@@ -26,6 +26,17 @@ function startQuiz() {
 
 function endQuiz() {
     clearInterval(timerInterval);
+    var initials = prompt("What're your initials?");
+    if( initials !== "") {
+        var scores = JSON.parse(localStorage.getItem("highscores")) || [];
+        var userScore = {
+            initials: initials,
+            highscore: time
+        }
+        scores.push(userScore)
+        localStorage.setItem("highscores",JSON.stringify(scores))
+        window.location.href = "scores.html"
+    } 
 }
 
 
@@ -42,25 +53,28 @@ function showQuestion() {
         var choice = question.choices[i];
         btnEl.textContent = choice;
         btnEl.onclick = checkAnswer;
-        btnEl.setAttribute("data-answer", question.answer);
+        btnEl.setAttribute("value", question.choices[i]);
         questionDiv.append(btnEl);
     }
     qDiv.append(questionDiv);
 }
 
 
-function checkAnswer(choice, answer) {
-    var answer = event.target.getAttribute("data-answer");
-    var choice = event.target.textContent;
-    if (choice === answer) {
-        console.log("CORRECT!")
-    } 
-    else {
-        time -= 10;
-        console.log("WRONG")
-    }
+function checkAnswer() {
+    if (this.value !== questions[gameIndex].answer) {
+        time -= 10
+        if (time < 0 ) {
+            time = 0 
+        }
+        timerEl.textContent = time
+    }   
+
     gameIndex++;
-    showQuestion();
+    if (gameIndex === questions.length) {
+        endQuiz()
+    } else {
+        showQuestion()
+    }
 }
 
 
