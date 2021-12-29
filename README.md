@@ -24,3 +24,7 @@ https://ragil1114.github.io/code-quiz/
 
 GitHub:
 https://github.com/ragil1114/code-quiz.git
+
+##### Image
+"C:\Users\Rahil\code\projects\code-quiz\assets\images\demo.png"
+"C:\Users\Rahil\code\projects\code-quiz\assets\images\demo2.png"

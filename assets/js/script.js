@@ -27,11 +27,13 @@ function startQuiz() {
 function endQuiz() {
     clearInterval(timerInterval);
     var initials = prompt("What're your initials?");
+    var highscore = timerEl.textContent
+    console.log(highscore)
     if( initials !== "") {
         var scores = JSON.parse(localStorage.getItem("highscores")) || [];
         var userScore = {
-            initials: initials,
-            highscore: time
+            initials,
+            highscore
         }
         scores.push(userScore)
         localStorage.setItem("highscores",JSON.stringify(scores))
